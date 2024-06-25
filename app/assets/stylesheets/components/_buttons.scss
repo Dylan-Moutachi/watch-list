@@ -1,0 +1,45 @@
+.home-button {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  &:hover {
+    scale: 0.8;
+    background-color: #ababab;
+    color: white;
+    transition: 0.2s;
+  }
+}
+
+.back-button {
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+
+  &:hover {
+    scale: 0.9;
+    color: #c0eced;
+    transition: 0.2s;
+  }
+}
+
+.delete-button {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+
+  &:hover {
+    scale: 0.9;
+    color: #c0eced;
+    transition: 0.2s;
+  }
+}
+
+.form-button:hover {
+  background-color: #c0eced !important;
+  scale: 0.9;
+  transition: 0.2s;
+}

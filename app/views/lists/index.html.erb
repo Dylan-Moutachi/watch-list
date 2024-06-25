@@ -1,0 +1,26 @@
+<div class="my-3 px-4">
+  <%= link_to root_path, class: "back-button" do %>
+    <i class="fa-solid fa-circle-left"></i>
+  <% end %>
+</div>
+<h1 class="text-center mt-3">My lists</h1>
+<div class="list-container">
+  <% if @lists.any? %>
+    <% @lists.each do |list| %>
+      <div class="card-category position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <div>
+          <%= link_to list_path(list), class: "delete-button position-absolute top-0 end-0 me-2", data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete the list '#{list.name}'?"} do %>
+            <i class="fa-regular fa-circle-xmark"></i>
+          <% end %>
+        </div>
+        <%= link_to list_path(list), class: "list-name" do %>
+          <%= list.name %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= link_to "New list", new_list_path %>
+  <% else %>
+    <p>No lists yet.</p>
+    <%= link_to "New list", new_list_path %>
+  <% end %>
+</div>

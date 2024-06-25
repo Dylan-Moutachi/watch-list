@@ -1,0 +1,42 @@
+<div class="my-3 px-4">
+  <%= link_to lists_path, class: "back-button" do %>
+    <i class="fa-solid fa-circle-left"></i>
+  <% end %>
+</div>
+<h1 class="text-center mt-3"> <%= @list.name %> </h1>
+
+<div class="movie-container">
+  <% if @bookmarks.any? %>
+    <% @bookmarks.each do |bookmark| %>
+      <div class="card-product">
+        <img src=<%= bookmark.movie.poster_url %> />
+        <div class="card-product-infos position-relative">
+          <h2><%= bookmark.movie.title %><p><%= bookmark.movie.rating %><i class="fa-solid fa-star"></i></p></h2>
+          <p><%= bookmark.movie.overview %></p>
+          <div>
+            <%= link_to list_bookmark_path(@list, bookmark), class: "delete-button position-absolute top-0 end-0 me-2", data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete the bookmark for '#{bookmark.movie.title}'?"} do %>
+              <i class="fa-regular fa-circle-xmark"></i>
+            <% end %>
+            <div class="comments my-2">
+              <button class="form-button btn btn-outline-light">
+                Add a comment?
+              </button>
+              <form class="d-none">
+                <div class="mb-3">
+                  <label for="comment" class="form-label">Add a comment</label>
+                  <input type="comment" class="form-control" id="comment" aria-describedby="comment">
+                  <div id="comment" class="form-text">Your comment will appear in the bookmark.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to "New movie", new_list_bookmark_path(@list) %>
+  <% else %>
+    <p>No movies yet.</p>
+    <%= link_to "New movie", new_list_bookmark_path(@list) %>
+  <% end %>
+</div>
