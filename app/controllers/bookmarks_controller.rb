@@ -22,7 +22,7 @@ class BookmarksController < ApplicationController
   def update
     @bookmark = Bookmark.find(params[:id])
     @bookmark.update(bookmark_params)
-    redirect_to lists_path
+    redirect_to list_path(@bookmark.list)
   end
 
   def destroy

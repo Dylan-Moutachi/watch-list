@@ -7,7 +7,7 @@
 <div class="list-container">
   <% if @lists.any? %>
     <% @lists.each do |list| %>
-      <div class="card-category position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <div class="card-category position-relative" style='background-image: url("<%= cl_image_path(list.name.downcase) %>");'>
         <div>
           <%= link_to list_path(list), class: "delete-button position-absolute top-0 end-0 me-2", data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete the list '#{list.name}'?"} do %>
             <i class="fa-regular fa-circle-xmark"></i>
