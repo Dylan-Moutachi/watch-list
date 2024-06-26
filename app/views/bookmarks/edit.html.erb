@@ -1,0 +1,5 @@
+<h1>Edit comment in <%= @bookmark.list.name %></h1>
+<%= simple_form_for [@bookmark] do |f| %>
+  <%= f.text_field :comment, placeholder: "Leave a comment about this movie" %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
